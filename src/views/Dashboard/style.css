@@ -1,5 +1,5 @@
 .dashboard {
-    @apply grid grid-rows-2 grid-cols-3 mt-14 mb-14 ml-5 mr-5;
+    @apply grid grid-rows-2 grid-cols-1 mt-14 mb-14 ml-5 mr-5;
     @apply md:ml-7 md:mr-7;
     @apply lg:ml-[13.625rem] lg:mr-[13.625rem];
 }
