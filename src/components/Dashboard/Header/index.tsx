@@ -1,5 +1,6 @@
 import DatePicker from "components/DatePicker";
 import SearchBar from "../../SearchBar";
+import 'components/Dashboard/Header/style.css'
 
 const Header = () => {
   return (
