@@ -6,9 +6,13 @@ import "components/Dashboard/Header/style.css";
 const Header = () => {
   return (
     <div className="header-container">
-      <ReportButton />
-      <DatePicker />
-      <SearchBar />
+      <div className="header-left-section">
+        <ReportButton />
+        <DatePicker />
+      </div>
+      <div className="header-right-section">
+        <SearchBar />
+      </div>
     </div>
   );
 };
