@@ -1,0 +1,31 @@
+.task-tracker-container {
+    @apply grid grid-cols-3 gap-4;
+}
+
+.task-tracker-container .column {
+    @apply bg-white py-6 px-4 rounded-2xl shadow-soft max-h-[1000px] h-full;
+}
+
+.task-tracker-container .column .title {
+    @apply text-sm font-[590] mb-5;
+}
+
+.task-tracker-container .column[data-column-type=BACKLOG] .title {
+    @apply text-backlog;
+}
+
+.task-tracker-container .column[data-column-type=IN_PROGRESS] .title {
+    @apply text-in-progress;
+}
+
+.task-tracker-container .column[data-column-type=DONE] .title {
+    @apply text-done;
+}
+
+.task-tracker-container .column .column-content {
+    @apply flex flex-col gap-4;
+}
+
+.task-tracker-container .item {
+    @apply border border-neutral-200 rounded-xl bg-white px-4 pt-[14px] py-4 cursor-pointer;
+}

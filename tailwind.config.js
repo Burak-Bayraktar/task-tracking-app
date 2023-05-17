@@ -12,9 +12,13 @@ export default {
       backgroundImage: {
         'arrow-down': "url('/src/assets/icons/arrow-down.svg')",
         'search': "url('/src/assets/icons/search.svg')",
-      }
+      },
+      colors: {
+        'backlog': '#ACADF9',
+        'in-progress': '#E26E46',
+        'done': '#56B969',
+      },
     },
   },
   plugins: [],
 }
-
