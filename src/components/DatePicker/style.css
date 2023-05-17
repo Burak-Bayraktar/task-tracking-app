@@ -8,5 +8,11 @@
 }
 
 .date-picker-container .calendar {
-    @apply absolute top-14;
+    @apply absolute z-10 top-14 -left-16;
+    @apply sm:left-0
+}
+
+.date-picker-container .calendar .react-calendar {
+    @apply w-[250px];
+    @apply sm:w-[350px];
 }

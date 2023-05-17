@@ -1,5 +1,6 @@
 .search-bar-container {
-    @apply w-[17.5rem] h-11 border-neutral-200 border rounded-md relative;
+    @apply w-full h-11 border-neutral-200 border rounded-md relative;
+    @apply sm:w-[17.5rem];
 }
 
 .search-bar-container form {
