@@ -1,4 +1,5 @@
 import Tracker from "components/Tracker";
+import { useTask } from "hooks/useTask";
 import { TaskColumn } from "types";
 
 // TODO: Replace this with actual data
@@ -69,7 +70,7 @@ const taskArrayWithColumns: TaskColumn[] = [
           type: "FEATURE",
         },
         status: {
-          id: 1,
+          id: 2,
           title: "In Progress",
           type: "IN_PROGRESS",
         },
@@ -90,7 +91,7 @@ const taskArrayWithColumns: TaskColumn[] = [
           type: "FEATURE",
         },
         status: {
-          id: 1,
+          id: 2,
           title: "In Progress",
           type: "IN_PROGRESS",
         },
@@ -117,7 +118,7 @@ const taskArrayWithColumns: TaskColumn[] = [
           type: "FEATURE",
         },
         status: {
-          id: 1,
+          id: 3,
           title: "Done",
           type: "DONE",
         },
@@ -138,7 +139,7 @@ const taskArrayWithColumns: TaskColumn[] = [
           type: "FEATURE",
         },
         status: {
-          id: 1,
+          id: 3,
           title: "Done",
           type: "DONE",
         },
@@ -159,7 +160,7 @@ const TaskTrackingSection = () => {
               <div className="column-content">
                 {taskColumn.tasks.map((task) => {
                   return (
-                    <Tracker.Item key={task.id} id={task.id}>
+                    <Tracker.Item key={task.id} id={task.id} statusId={task.status.id}>
                       <Tracker.Item.Author>
                         {task.author.name}
                       </Tracker.Item.Author>

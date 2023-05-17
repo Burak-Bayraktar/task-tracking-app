@@ -1,3 +1,6 @@
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import Column from "components/Tracker/Column";
 import Item from "components/Tracker/Item";
 import "components/Tracker/style.css";
@@ -7,7 +10,11 @@ type TrackerProps = {
 };
 
 const Tracker = ({ children }: TrackerProps) => {
-  return <div className="task-tracker-container">{children}</div>;
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <div className="task-tracker-container">{children}</div>
+    </DndProvider>
+  );
 };
 
 Tracker.Column = Column;

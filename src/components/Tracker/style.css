@@ -14,12 +14,24 @@
     @apply text-backlog;
 }
 
+.task-tracker-container .column[data-column-type=BACKLOG].drag-over {
+    @apply bg-backlog/40;
+}
+
 .task-tracker-container .column[data-column-type=IN_PROGRESS] .title {
     @apply text-in-progress;
 }
 
+.task-tracker-container .column[data-column-type=IN_PROGRESS].drag-over {
+    @apply bg-in-progress/40;
+}
+
 .task-tracker-container .column[data-column-type=DONE] .title {
     @apply text-done;
+}
+
+.task-tracker-container .column[data-column-type=DONE].drag-over {
+    @apply bg-done/40;
 }
 
 .task-tracker-container .column .column-content {
