@@ -1,0 +1,12 @@
+.date-picker-container {
+    @apply flex w-36 h-11 bg-white border-neutral-200 border rounded-md ml-4 relative cursor-pointer;
+    @apply after:bg-arrow-down after:absolute after:right-3 after:top-3 after:w-5 after:h-5;
+}
+
+.selected-date {
+    @apply flex items-center ml-4 font-semibold;
+}
+
+.date-picker-container .calendar {
+    @apply absolute top-14;
+}

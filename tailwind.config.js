@@ -9,6 +9,9 @@ export default {
       boxShadow: {
         'soft': '0px 4px 8px rgba(0, 0, 0, 0.1)',
       },
+      backgroundImage: {
+        'arrow-down': "url('/src/assets/icons/arrow-down.svg')",
+      }
     },
   },
   plugins: [],
