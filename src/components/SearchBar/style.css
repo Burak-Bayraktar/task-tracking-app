@@ -1,0 +1,19 @@
+.search-bar-container {
+    @apply w-[17.5rem] h-11 border-neutral-200 border rounded-md relative;
+}
+
+.search-bar-container form {
+    @apply h-full;
+}
+
+.search-bar-container input {
+    @apply w-full h-full pl-4 pr-10 rounded-md bg-transparent;
+}
+
+.search-bar-container input::placeholder {
+    @apply text-neutral-400 text-sm;
+}
+
+.search-bar-container img {
+    @apply absolute top-3 right-3;
+}

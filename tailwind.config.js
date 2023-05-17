@@ -11,6 +11,7 @@ export default {
       },
       backgroundImage: {
         'arrow-down': "url('/src/assets/icons/arrow-down.svg')",
+        'search': "url('/src/assets/icons/search.svg')",
       }
     },
   },
