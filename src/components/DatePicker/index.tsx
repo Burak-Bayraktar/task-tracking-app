@@ -2,15 +2,21 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "components/DatePicker/style.css";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
+import useDate from "hooks/useDate";
 
 const DatePicker = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
-  const [value, onChange] = useState<Date>(new Date());
   const containerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const { date: activeDate } = useDate();
 
   const handleChange = (e: Date) => {
-    // TODO: Add logic to change date later
-    console.log(e, "date changed");
+    const day = e.getDate();
+    const month = e.getMonth() + 1;
+    const year = e.getFullYear();
+
+    navigate(`?date=${year}-${month}-${day}`);
   };
 
   useEffect(() => {
@@ -41,7 +47,7 @@ const DatePicker = () => {
         <div className="selected-date">Today</div>
         {isCalendarOpen && (
           <div className="calendar" onClick={(e) => handleCalendarContainerClick(e)}>
-            <Calendar value={value} onClickDay={(e) => handleChange(e)} />
+            <Calendar value={activeDate ? new Date(activeDate) : new Date()} onClickDay={(e) => handleChange(e)} />
           </div>
         )}
       </div>

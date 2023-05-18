@@ -1,16 +1,20 @@
+import useDate from "hooks/useDate";
 import { createContext, useEffect, useState } from "react";
 import { Task, TaskColumn } from "types";
+import { convertToTasksWithColumn } from "utils";
 
 type TaskContextType = {
   tasks: Task[];
+  filteredTasks: Task[];
   tasksWithColumns: TaskColumn[];
   addTask: (task: Task) => void;
-  filterByDate: (date: Date) => void;
+  filterByDate: (date: string) => void;
   filterBySearchKey: (searchKey: string) => void;
 };
 
 const TaskProps: TaskContextType = {
   tasks: [],
+  filteredTasks: [],
   tasksWithColumns: [],
   addTask(task) {
     console.log("addTask", task);
@@ -36,6 +40,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
   const [tasksWithColumns, setTasksWithColumns] = useState<TaskColumn[]>([
     {
       title: "Backlog",
@@ -54,17 +59,24 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
     },
   ]);
 
+  const { dateAsLocaleDateString } = useDate();
+
   useEffect(() => {
     const { tasks, tasksWithColumns } = getItemsFromLocalStorage();
 
     if (tasks) {
       setTasks(JSON.parse(tasks) as Task[]);
+      setFilteredTasks(JSON.parse(tasks) as Task[]);
     }
 
     if (tasksWithColumns) {
       setTasksWithColumns(JSON.parse(tasksWithColumns) as TaskColumn[]);
     }
   }, []);
+
+  useEffect(() => {
+    filterByDate(dateAsLocaleDateString!);
+  }, [dateAsLocaleDateString]);
 
   const addTask = (task: Task) => {
     const newTasks = [...tasks, task];
@@ -98,9 +110,29 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("tasksWithColumns", JSON.stringify(tasksWithColumns));
   };
 
-  const filterByDate = (date: Date) => {
+  const filterByDate = (date: string) => {
+    if (tasks.length === 0) {
+      return;
+    }
+
     // TODO: filter tasks by date
-    console.log("filterByDate", date);
+    const filteredTasks = tasks.filter((task) => {
+      const convertedTaskDate = new Date(task.createdAt).toLocaleDateString(
+        "tr-TR"
+      );
+      return convertedTaskDate === date;
+    });
+
+    const convertedTasks = convertToTasksWithColumn(filteredTasks);
+
+    console.info(`Tasks filtered by date: ${date}`, filteredTasks);
+    console.info(
+      `Tasks with columns filtered by date: ${date}`,
+      convertedTasks
+    );
+
+    setTasksWithColumns(convertedTasks);
+    setFilteredTasks(filteredTasks);
   };
 
   const filterBySearchKey = (searchKey: string) => {
@@ -110,6 +142,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const values = {
     tasks,
+    filteredTasks,
     tasksWithColumns,
     addTask,
     filterByDate,
