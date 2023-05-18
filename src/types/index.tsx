@@ -38,6 +38,8 @@ type TaskColumn = {
 };
 
 export type {
+    TaskItemTitle,
+    TaskItemType,
     TaskTrackingColumnType,
     TaskTrackingColumnTitle,
     Author,
