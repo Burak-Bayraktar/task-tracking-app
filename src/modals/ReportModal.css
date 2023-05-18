@@ -1,0 +1,63 @@
+.report-modal {
+    @apply max-w-[853px] w-full absolute top-32 rounded-2xl;
+}
+
+.report-modal textarea {
+    border: 1px solid #E5E5E5;
+    border-radius: 6px;
+    resize: none;
+    overflow: hidden;
+    min-height: 20px;
+}
+
+.report-modal header {
+    @apply grid grid-cols-2 grid-rows-2;
+}
+
+.report-modal header .description {
+    @apply col-start-1 col-end-3;
+}
+
+.report-modal form {
+    @apply mt-5;
+}
+
+.report-modal h1 {
+    @apply mb-3;
+}
+
+.report-modal .report-row {
+    @apply flex mb-4;
+}
+
+.report-modal .report-row legend {
+    @apply absolute w-px h-px p-0 overflow-hidden whitespace-nowrap border-0;
+}
+
+.report-modal .report-row .task-type {
+    @apply mr-4;
+}
+
+.report-modal header .title {
+    @apply text-2xl font-semibold;
+}
+
+.report-modal header .close-icon {
+    @apply justify-self-end cursor-pointer;
+}
+
+.report-modal header .description {
+    @apply text-sm;
+}
+
+.report-modal .report-row textarea {
+    @apply w-full h-11 text-sm py-3 px-4;
+}
+
+.report-modal .submit-button-container {
+    @apply flex justify-end;
+}
+
+.report-modal .submit-button-container button {
+    @apply ml-auto w-24 h-11 bg-[#3D69E7] rounded-md text-white text-sm;
+}
