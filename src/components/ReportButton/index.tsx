@@ -1,10 +1,11 @@
 import "components/ReportButton/style.css"
+import { useModal } from "hooks/useModal";
 
 const ReportButton = () => {
+  const { addModal } = useModal();
 
   const handleClick = () => {
-    // TODO: Open modal to report daily tasks
-    console.log("ReportButton clicked")
+    addModal("Report", null);
   }
 
   return (
