@@ -3,3 +3,7 @@
     @apply md:ml-7 md:mr-7 md:grid-rows-1;
     @apply lg:ml-[13.625rem] lg:mr-[13.625rem];
 }
+
+.dashboard .active-user {
+    @apply flex justify-end text-sm mb-5;
+}
