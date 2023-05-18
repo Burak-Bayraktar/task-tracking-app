@@ -5,7 +5,7 @@ import { useDrag } from "react-dnd";
 
 type ItemProps = {
   children: React.ReactNode;
-  id: number;
+  id: string;
   statusId: number;
 };
 

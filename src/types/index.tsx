@@ -12,7 +12,7 @@ type Author = {
 };
 
 type Task = {
-    id: number;
+    id: string;
     author: Author;
     description: string;
     type: TaskType;
