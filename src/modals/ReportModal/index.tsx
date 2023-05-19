@@ -10,7 +10,7 @@ import Fieldset from "modals/ReportModal/Fieldset";
 import "modals/ReportModal/style.css";
 
 const ReportModal = () => {
-  const { manageTasks, filteredTasks } = useTask();
+  const { manageTasks, filteredTasks, dateFilteredTasks } = useTask();
   const { removeModal } = useModal();
   const { activeUser } = useUser();
   const { date, dateAsLocaleDateString } = useDate();
@@ -33,7 +33,7 @@ const ReportModal = () => {
   useEffect(() => {
     if (activeUser) {
       const filteredTasksByUser = filterTasksByUser(
-        filteredTasks,
+        dateFilteredTasks || filteredTasks,
         activeUser.id
       );
 

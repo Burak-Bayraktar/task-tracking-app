@@ -5,6 +5,7 @@ import { convertToTasksWithColumn, filterTasksByDate } from "utils";
 
 type TaskContextType = {
   tasks: Task[];
+  dateFilteredTasks: Task[];
   filteredTasks: Task[];
   tasksWithColumns: TaskColumn[];
   manageTasks: (taskModifications: Task[], action: 'add' | 'update' | 'delete') => void;
@@ -37,6 +38,7 @@ const initialTaskColumns: TaskColumn[] = [
 
 const TaskContext = createContext<TaskContextType>({
   tasks: [],
+  dateFilteredTasks: [],
   filteredTasks: [],
   tasksWithColumns: initialTaskColumns,
   manageTasks() {},
@@ -48,6 +50,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [dateFilteredTasks, setDateFilteredTasks] = useState<Task[]>([]);
   const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
   const [tasksWithColumns, setTasksWithColumns] = useState<TaskColumn[]>(initialTaskColumns);
 
@@ -63,6 +66,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
       const result = convertToTasksWithColumn(filteredByDate);
 
       setTasks(parsedTasks);
+      setDateFilteredTasks(filteredByDate);
       setFilteredTasks(filteredByDate);
       setTasksWithColumns(result);
     }
@@ -123,18 +127,19 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
     );
 
     setTasksWithColumns(convertedTasks);
-    setFilteredTasks(filteredTasks);
+    setDateFilteredTasks(filteredTasks);
   };
 
   const filterBySearchKey = (searchKey: string) => {
-    // TODO: filter tasks by search key
-    console.log("search key", searchKey);
+    const newFiltered = dateFilteredTasks.filter(task => task.description.toLowerCase().includes(searchKey.toLowerCase()));
+    setTasksWithColumns(convertToTasksWithColumn(newFiltered));
   };
 
   return (
     <TaskContext.Provider 
       value={{
         tasks,
+        dateFilteredTasks,
         filteredTasks,
         tasksWithColumns,
         manageTasks,
