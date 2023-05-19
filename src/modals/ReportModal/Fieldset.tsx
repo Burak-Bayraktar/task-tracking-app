@@ -16,6 +16,7 @@ const Fieldset = ({ index, reportedTask }: FieldsetProps) => (
       <select name={`task-type-${index + 1}`} className="task-type">
         {statuses.map((status) => (
           <option
+            key={status}
             value={status.toLowerCase()}
             selected={
               reportedTask &&

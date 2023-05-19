@@ -1,5 +1,5 @@
 import { useModal } from "hooks/useModal";
-import ReportModal from "./ReportModal";
+import ReportModal from "modals/ReportModal";
 import "modals/ModalOpener.css";
 
 const possibleModals = [
@@ -19,7 +19,7 @@ const ModalOpener = () => {
       {modals?.map((modal) => {
         const modalToRender = possibleModals.find((m) => m.name === modal.name);
         if (!modalToRender) return null;
-        return <modalToRender.element />;
+        return <modalToRender.element key={modal.name} />;
       })}
     </div>
   );

@@ -5,10 +5,9 @@ import { useModal } from "hooks/useModal";
 import { useTask } from "hooks/useTask";
 import useUser from "hooks/useUser";
 import useDate from "hooks/useDate";
-
 import { filterTasksByDate, filterTasksByUser } from "utils";
-import Fieldset from "modals/Fieldset";
-import "modals/ReportModal.css";
+import Fieldset from "modals/ReportModal/Fieldset";
+import "modals/ReportModal/style.css";
 
 const ReportModal = () => {
   const { manageTasks, filteredTasks } = useTask();
@@ -171,9 +170,9 @@ const ReportModal = () => {
           .fill("")
           .map((_, index) =>
             reportedTasks && reportedTasks[index] ? (
-              <Fieldset index={index} reportedTask={reportedTasks[index]} />
+              <Fieldset key={reportedTasks[index].id} index={index} reportedTask={reportedTasks[index]} />
             ) : (
-              <Fieldset index={index} />
+              <Fieldset key={index} index={index} />
             )
           )}
         <div className="submit-button-container">
