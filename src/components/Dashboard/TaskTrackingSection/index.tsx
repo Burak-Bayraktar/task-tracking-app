@@ -18,10 +18,10 @@ const TaskTrackingSection = () => {
               key={taskColumn.type}
               title={taskColumn.title}
               type={taskColumn.type}
+              areItemsExist={taskColumn.tasks.length > 0}
             >
               <div className="column-content">
                 {taskColumn.tasks.map((task) => {
-                  console.log(task)
                   return (
                     <Tracker.Item
                       key={task.id}

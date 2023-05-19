@@ -18,8 +18,16 @@
     @apply bg-backlog/40;
 }
 
+.task-tracker-container .column[data-column-type=BACKLOG].--has-item {
+    @apply bg-backlog/10;
+}
+
 .task-tracker-container .column[data-column-type=IN_PROGRESS] .title {
     @apply text-in-progress;
+}
+
+.task-tracker-container .column[data-column-type=IN_PROGRESS].--has-item {
+    @apply bg-in-progress/10;
 }
 
 .task-tracker-container .column[data-column-type=IN_PROGRESS].drag-over {
@@ -32,6 +40,10 @@
 
 .task-tracker-container .column[data-column-type=DONE].drag-over {
     @apply bg-done/40;
+}
+
+.task-tracker-container .column[data-column-type=DONE].--has-item {
+    @apply bg-done/10;
 }
 
 .task-tracker-container .column .column-content {

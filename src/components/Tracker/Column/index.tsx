@@ -6,9 +6,10 @@ type ColumnProps = {
   children: React.ReactNode;
   title: TaskTrackingColumnTitle;
   type: TaskTrackingColumnType;
+  areItemsExist?: boolean;
 };
 
-const Column = ({ children, title, type }: ColumnProps) => {
+const Column = ({ children, title, type, areItemsExist }: ColumnProps) => {
   const { tasks, manageTasks } = useTask();
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "task",
@@ -19,7 +20,7 @@ const Column = ({ children, title, type }: ColumnProps) => {
       };
     },
   }), [tasks]);
-
+  
   const addItemToColumn = (item: { id: string, statusId: number }) => {
     const task = tasks.find(task => task.id === item.id);
     if (!task) return;
@@ -37,7 +38,7 @@ const Column = ({ children, title, type }: ColumnProps) => {
   };
 
   return (
-    <div className={`column ${isOver ? 'drag-over' : ''}`} data-column-type={type} ref={drop}>
+    <div className={`column ${isOver ? 'drag-over' : ''} ${areItemsExist ? '--has-item' : ''}`} data-column-type={type} ref={drop}>
       <h2 className="title">{title}</h2>
       {children}
     </div>
