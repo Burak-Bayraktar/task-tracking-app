@@ -39,7 +39,8 @@ const DatePicker = () => {
     const day = e.getDate();
     const month = e.getMonth() + 1;
     const year = e.getFullYear();
-
+    
+    new URLSearchParams().delete("search");
     navigate(`?date=${year}-${month}-${day}`);
   };
 
