@@ -19,18 +19,6 @@ const ReportModal = () => {
   const DAILY_REPORT_LIMIT = 3;
 
   useEffect(() => {
-    // TODO: don't forget to add cleanup and remove the event listener.
-    // TODO: also, this is not a good practice, don't use querySelectorAll.
-    // TODO: instead, use useRef and pass the ref to the textarea.
-    document.querySelectorAll(".report-row textarea")?.forEach((textarea) => {
-      textarea.addEventListener("input", function (this: HTMLTextAreaElement) {
-        this.style.height = "auto";
-        this.style.height = this.scrollHeight + "px";
-      });
-    });
-  }, []);
-
-  useEffect(() => {
     if (activeUser) {
       const filteredTasksByUser = filterTasksByUser(
         dateFilteredTasks || filteredTasks,

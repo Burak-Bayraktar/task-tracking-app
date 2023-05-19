@@ -22,6 +22,9 @@ export default {
         'feature': '#56B969',
         'refactor': '#E034CF',
       },
+      gridTemplateRows: {
+        'auto': 'auto',
+      }
     },
   },
   plugins: [],
