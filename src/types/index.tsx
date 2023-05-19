@@ -5,7 +5,7 @@ type TaskItemType = "BUG" | "FEATURE" | "REFACTOR";
 type TaskItemTitle = "Bug" | "Feature" | "Refactor";
 
 type Author = {
-    id: number;
+    id: string;
     img: string;
     name: string;
     title: string;

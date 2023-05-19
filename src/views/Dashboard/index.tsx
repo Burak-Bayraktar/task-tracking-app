@@ -5,6 +5,7 @@ import "views/Dashboard/style.css";
 
 const Dashboard = () => {
   const { activeUser } = useUser();
+
   return (
     <div className="dashboard">
         <div className="active-user">
