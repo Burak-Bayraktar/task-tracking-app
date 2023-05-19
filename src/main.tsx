@@ -6,18 +6,21 @@ import { ModalProvider } from "contexts/ModalContext.tsx";
 import "index.css";
 import ModalOpener from "modals/ModalOpener.tsx";
 import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "contexts/UserContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      <TaskProvider>
-        <ModalProvider>
-          <div className="app-container">
-            <App />
-            <ModalOpener />
-          </div>
-        </ModalProvider>
-      </TaskProvider>
+      <UserProvider>
+        <TaskProvider>
+          <ModalProvider>
+            <div className="app-container">
+              <App />
+              <ModalOpener />
+            </div>
+          </ModalProvider>
+        </TaskProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
