@@ -1,19 +1,19 @@
 {
   "users": [
     {
-      "id": 0,
+      "id": "0",
       "name": "Bill Gates",
       "bio": "Chairman of Microsoft",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bill_Gates_2017_%28cropped%29.jpg/220px-Bill_Gates_2017_%28cropped%29.jpg"
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Elon Musk",
       "bio": "CTO at Tesla",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Elon_Musk_Royal_Society_%28crop1%29.jpg/220px-Elon_Musk_Royal_Society_%28crop1%29.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Jeff Bezos",
       "bio": "CEO at Amazon",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Jeff_Bezos_2016.jpg/220px-Jeff_Bezos_2016.jpg"
