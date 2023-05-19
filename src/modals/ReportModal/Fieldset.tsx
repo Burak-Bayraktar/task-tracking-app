@@ -47,7 +47,7 @@ const Fieldset = ({ index, reportedTask }: FieldsetProps) => {
             { value: "Refactor", label: "Refactor" },
           ]}
           styles={{
-            control: (provided, state) => ({
+            control: (provided) => ({
               ...provided,
               width: "178px",
               maxWidth: "100%",

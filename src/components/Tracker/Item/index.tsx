@@ -19,7 +19,7 @@ const Item = ({ children, id, statusId }: ItemProps) => {
   }));
 
   return (
-    <div ref={drag} className="item" data-task-id={id}>
+    <div ref={drag} className={`item ${isDragging ? '--dragging' : ''}`} data-task-id={id}>
       {children}
     </div>
   );
