@@ -25,7 +25,7 @@ const EmptyTaskTrackingSection = () => {
   return (
     <Tracker>
       {taskColumns.map((column) => (
-        <Tracker.Column title={column.name} type={column.type}>{null}</Tracker.Column>
+        <Tracker.Column key={column.type} title={column.name} type={column.type}>{null}</Tracker.Column>
       ))}
     </Tracker>
   );

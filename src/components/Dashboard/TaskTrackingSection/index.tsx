@@ -14,7 +14,7 @@ const TaskTrackingSection = () => {
       <Tracker>
         {tasksWithColumns.map((taskColumn) => {
           return (
-            <Tracker.Column title={taskColumn.title} type={taskColumn.type}>
+            <Tracker.Column key={taskColumn.type} title={taskColumn.title} type={taskColumn.type}>
               <div className="column-content">
                 {taskColumn.tasks.map((task) => {
                   return (
