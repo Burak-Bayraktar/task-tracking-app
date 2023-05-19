@@ -95,10 +95,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
         newTasks = [...tasks];
     }
 
-    const updatedTasksWithColumns = convertToTasksWithColumn(newTasks);
-
     setTasks(newTasks);
-    setTasksWithColumns(updatedTasksWithColumns);
     filterByDate(dateAsLocaleDateString!, newTasks);
     updateLocalStorage(newTasks);
   };
@@ -119,12 +116,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
       date
     );
     const convertedTasks = convertToTasksWithColumn(filteredTasks);
-
-    console.info(`Tasks filtered by date: ${date}`, filteredTasks);
-    console.info(
-      `Tasks with columns filtered by date: ${date}`,
-      convertedTasks
-    );
 
     setTasksWithColumns(convertedTasks);
     setDateFilteredTasks(filteredTasks);
