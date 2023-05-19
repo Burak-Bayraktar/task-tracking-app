@@ -156,9 +156,7 @@ const ReportModal = () => {
     <dialog open className="report-modal">
       <header>
         <h1 className="title">Report Your Daily Tasks</h1>
-        <span className="close-icon" onClick={closeModal}>
-          X
-        </span>
+        <div className="close-icon" onClick={closeModal} />
         <p className="description">
           Please report your daily tasks below. You should enter the task type,
           task name, and estimated time you will spent on the task. You can also

@@ -12,6 +12,7 @@ export default {
       backgroundImage: {
         'arrow-down': "url('/src/assets/icons/arrow-down.svg')",
         'search': "url('/src/assets/icons/search.svg')",
+        'close': "url('/src/assets/icons/close.svg')",
       },
       colors: {
         'backlog': '#ACADF9',

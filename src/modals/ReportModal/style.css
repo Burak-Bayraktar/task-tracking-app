@@ -1,5 +1,5 @@
 .report-modal {
-    @apply max-w-[853px] w-full absolute top-32 rounded-2xl;
+    @apply max-w-[853px] w-full absolute top-32 rounded-2xl p-6;
 }
 
 .report-modal textarea {
@@ -43,7 +43,7 @@
 }
 
 .report-modal header .close-icon {
-    @apply justify-self-end cursor-pointer;
+    @apply justify-self-end cursor-pointer bg-close bg-no-repeat w-6 h-6;
 }
 
 .report-modal header .description {
