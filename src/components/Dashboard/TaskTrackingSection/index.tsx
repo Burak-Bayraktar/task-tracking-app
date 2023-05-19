@@ -26,7 +26,7 @@ const TaskTrackingSection = () => {
                         {task.description}
                       </Tracker.Item.Description>
                       <Tracker.Item.TaskType>
-                        {task.status.title}
+                        {task.type.title}
                       </Tracker.Item.TaskType>
                     </Tracker.Item>
                   );
