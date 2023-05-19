@@ -20,7 +20,6 @@ const Item = ({ children, id, statusId }: ItemProps) => {
 
   return (
     <div ref={drag} className="item" data-task-id={id}>
-      <div className="id">{id}</div>
       {children}
     </div>
   );
