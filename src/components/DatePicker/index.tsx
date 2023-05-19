@@ -9,15 +9,17 @@ const DatePicker = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const { date: activeDate } = useDate();
+  const { date: activeDate, dateAsLocaleDateString } = useDate();
 
-  const handleChange = (e: Date) => {
-    const day = e.getDate();
-    const month = e.getMonth() + 1;
-    const year = e.getFullYear();
+  const [currentDate, setCurrentDate] = useState<string>("");
 
-    navigate(`?date=${year}-${month}-${day}`);
-  };
+  useEffect(() => {
+    const isToday =
+      new Date().toLocaleDateString("tr-TR") === dateAsLocaleDateString;
+    if (dateAsLocaleDateString) {
+      setCurrentDate(isToday ? "Today" : dateAsLocaleDateString!);
+    }
+  }, [dateAsLocaleDateString]);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -33,7 +35,17 @@ const DatePicker = () => {
     };
   }, [isCalendarOpen]);
 
-  const handleCalendarContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleChange = (e: Date) => {
+    const day = e.getDate();
+    const month = e.getMonth() + 1;
+    const year = e.getFullYear();
+
+    navigate(`?date=${year}-${month}-${day}`);
+  };
+
+  const handleCalendarContainerClick = (
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
     e.stopPropagation();
   };
 
@@ -44,10 +56,16 @@ const DatePicker = () => {
         onClick={() => setIsCalendarOpen(!isCalendarOpen)}
         ref={containerRef}
       >
-        <div className="selected-date">Today</div>
+        <div className="selected-date">{currentDate}</div>
         {isCalendarOpen && (
-          <div className="calendar" onClick={(e) => handleCalendarContainerClick(e)}>
-            <Calendar value={activeDate ? new Date(activeDate) : new Date()} onClickDay={(e) => handleChange(e)} />
+          <div
+            className="calendar"
+            onClick={(e) => handleCalendarContainerClick(e)}
+          >
+            <Calendar
+              value={activeDate ? new Date(activeDate) : new Date()}
+              onClickDay={(e) => handleChange(e)}
+            />
           </div>
         )}
       </div>
