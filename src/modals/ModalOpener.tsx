@@ -1,6 +1,7 @@
 import { useModal } from "hooks/useModal";
 import ReportModal from "modals/ReportModal";
 import "modals/ModalOpener.css";
+import { useEffect } from "react";
 
 const possibleModals = [
   {
@@ -11,6 +12,16 @@ const possibleModals = [
 
 const ModalOpener = () => {
   const { modals } = useModal();
+
+  useEffect(() => {
+    if (modals && modals.length > 0) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    }
+  }, [modals]);
 
   if (modals?.length === 0) return null;
 
