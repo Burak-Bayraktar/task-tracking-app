@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { Task, TaskColumn } from "types";
 
 const convertToTasksWithColumn = (tasks: Task[]) => {
@@ -48,4 +49,8 @@ const filterTasksByUser = (tasks: Task[], userId: string) => {
   return filteredTasks;
 };
 
-export { convertToTasksWithColumn, filterTasksByDate, filterTasksByUser };
+const getIsoDate = (dateStr: string) => {
+  return DateTime.fromFormat(dateStr, 'yyyy-M-d', { locale: 'tr' }).toISODate();
+}
+
+export { convertToTasksWithColumn, filterTasksByDate, filterTasksByUser, getIsoDate };
