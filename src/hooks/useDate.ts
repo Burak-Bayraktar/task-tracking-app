@@ -1,12 +1,19 @@
-import { useLocation } from "react-router";
+import { DateTime } from 'luxon';
+import { useLocation } from 'react-router-dom';
+import { getIsoDate } from 'utils';
 
 const useDate = () => {
    const { search } = useLocation();
-   const date = new URLSearchParams(search).get("date");
+   const dateFromUrl = new URLSearchParams(search).get("date");
+   let isoDate: string | null = '';
+
+   if (dateFromUrl) {
+      isoDate = getIsoDate(dateFromUrl);
+   }
 
    return {
-    date,
-    dateAsLocaleDateString: date && new Date(date).toLocaleDateString('tr-TR'),
+    date: isoDate,
+    dateAsLocaleDateString: isoDate && DateTime.fromISO(isoDate, { locale: 'tr' }).toLocaleString(),
    }
 }
 
