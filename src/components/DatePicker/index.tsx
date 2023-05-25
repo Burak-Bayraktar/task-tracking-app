@@ -4,6 +4,7 @@ import "components/DatePicker/style.css";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import useDate from "hooks/useDate";
+import { DateTime } from "luxon";
 
 const DatePicker = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
@@ -14,10 +15,13 @@ const DatePicker = () => {
   const [currentDate, setCurrentDate] = useState<string>("");
 
   useEffect(() => {
-    const isToday =
-      new Date().toLocaleDateString("tr-TR") === dateAsLocaleDateString;
     if (dateAsLocaleDateString) {
-      setCurrentDate(isToday ? "Today" : dateAsLocaleDateString!);
+      const isToday =
+        DateTime.local()
+          .setLocale("tr-TR")
+          .toLocaleString(DateTime.DATE_SHORT) === dateAsLocaleDateString;
+
+      setCurrentDate(isToday ? "Today" : dateAsLocaleDateString);
     }
   }, [dateAsLocaleDateString]);
 
@@ -39,7 +43,7 @@ const DatePicker = () => {
     const day = e.getDate();
     const month = e.getMonth() + 1;
     const year = e.getFullYear();
-    
+
     new URLSearchParams().delete("search");
     navigate(`?date=${year}-${month}-${day}`);
   };

@@ -5,6 +5,7 @@ import useUser from "hooks/useUser";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import "views/Dashboard/style.css";
+import { DateTime } from "luxon";
 
 const Dashboard = () => {
   const { activeUser } = useUser();
@@ -12,10 +13,8 @@ const Dashboard = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    const today = new Date();
-    const day = today.getDate();
-    const month = today.getMonth() + 1;
-    const year = today.getFullYear();
+    const today = DateTime.now();
+    const { day, month, year } = today;
 
     if (!date) {
       navigate(`?date=${year}-${month}-${day}`);
